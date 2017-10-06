@@ -243,6 +243,8 @@ Accuracy in my tests was extremely good with 98-100% success rate. The only occa
 
 The main downside is the speed of the movement. One way to get aroud this might have been to only send part of the list for the calculated angles to the sim and 'skip' waypoints in the plan. However this increases the likelihood of collisions. I tried using only the final position but this was far too unreliable.
 
+Ross Lloyd
+
 ```python
 
 ```
