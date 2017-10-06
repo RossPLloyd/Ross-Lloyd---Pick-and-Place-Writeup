@@ -16,7 +16,7 @@
 
 
 Below is the DH diagram and table derived for the KukaKR210 arm:
-
+![test](../images/dh_modified_board.png)
 ![Modified DH Table][image1]
 
 The table was derived as follows:
