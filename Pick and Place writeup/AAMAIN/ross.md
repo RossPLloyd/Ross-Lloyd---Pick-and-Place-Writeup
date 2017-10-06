@@ -202,7 +202,21 @@ I also changed the method for finding the inverse of R0_3 in the line "R3_6 = R0
 
 I also decided to use the function definition of the transformation matrices given in the walktrhough as this was cleaner and solve time was reduced. I have however included the original "long form" symbolic matrices in comments for illustration.
 
-Accuracy in my tests was extremely good with 98-100% success rate. The only occasional failure I saw occurred when a plan is generated that is extremely close to the shelf retrieving the sample from position 3. The end effector would "try" to precisely match the plan at an inopportune moment, leading to a rotation of the sample that can sometimes lead to it hitting the shelf as it turns. However this is very rare in my testing and the end effector is nonetheless sticking to the plan. One way to possibly prevent it may have been to grip the samnple in the middle rather than at the top.
+**Analysis of Results**
+
+Below is a link to a short video of 10 successful pick and place cycles. 
+
+https://www.youtube.com/watch?v=0HsAr-Q0-i4
+
+Note that on cycle 7, the sample is correctly placed, but due to the 'tower' of previous samples, ends up rolling out of the bin! I do not consider this a failure as ultimately the robot followed the plan to the correct location. One way to avoid this would have been to modify the plan section of the code to slighly randomise the drop pose position within a small tolerance.
+
+The gripper follows the plan exactly, making frequent adjustments to ensure that the gripper frame exactly matches that of the plan. In some ways this is a disadvantage as it increases the overall cycle time, however it does ensure that the gripper is less likely to hit the shelf.
+
+Earlier results were poor due to the use of the LU decomposition. One theory is that LU carries out its own calculations which can introduce small errors, which can then be compounded by the subsequent atan2 calculations, leading to the wrong quadrant being selected.
+
+One thing I noticed was that the gripper would occasionally "let go" of the sample, however this only occurred when the grip cycle was interrupted by pressing the "next" button too soon. For this reason plenty of time was left to complete the grip cycle, which is in any case not controlled by IK_server.py.
+
+Accuracy in my tests was extremely good with 98-100% success rate. The only occasional failure I saw occurred when a plan is generated that is extremely close to the shelf retrieving the sample from position 3. The end effector would again "try" to precisely match the plan at an inopportune moment, leading to a rotation of the sample that can sometimes lead to it hitting the shelf as it turns. However this is very rare in my testing and the end effector is nonetheless sticking to the plan. One way to possibly prevent it may have been to grip the samnple in the middle rather than at the top.
 
 In order to improve calculation speed I could have perhaps experimented with using numpy rather than sympy, however I felt that the speed of the calculation stage of the pick and place cycle was not too onerous.
 
@@ -212,7 +226,6 @@ Note that the line:
 
 Represents the wrist centre position given by the following: 
 
-![no text][image19]
 ![WC_equation](../images/image-4.png)
 
 Where d is the distance along the z axis given by the urdf file of 0.303m from the end effector to the wrist centre.
