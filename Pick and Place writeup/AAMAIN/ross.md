@@ -91,7 +91,7 @@ It is expressed symbolically as follows, where r, p and y are the values of roll
 
 **HTM from base to gripper only**
 
-![HTM simple](/images/simple.png)
+![HTM simple](../images/simple.png)
 
 and where Px, Py and Pz are the world coordinates of the origin of the end effector. The rotation matrix is formed by mutliplying together the three elemental rotations about x, y and z axes.
 
