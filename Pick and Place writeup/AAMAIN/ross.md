@@ -186,14 +186,12 @@ Note that some terms are negative in sign which ensures that atan2 calculates th
 
 These expressions can be written in python as follows:
 
-![theta456code]: ../images/theta456.png
+![theta456code](../images/theta456.png)
 
 
 
 
 ## 3. The code
-
-[image19]: ../images/image-4.png
 
 *Fill in the IK_server.py file with properly commented python code for calculating Inverse Kinematics based on previously performed Kinematic Analysis. Your code must guide the robot to successfully complete 8/10 pick and place cycles.*
 
@@ -216,6 +214,7 @@ Note that the line:
 Represents the wrist centre position given by the following: 
 
 ![no text][image19]
+![WC_equation](../images/image-4.png)
 
 Where d is the distance along the z axis given by the urdf file of 0.303m from the end effector to the wrist centre.
 
