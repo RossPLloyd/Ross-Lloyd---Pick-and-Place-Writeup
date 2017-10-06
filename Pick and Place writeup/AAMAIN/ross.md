@@ -99,14 +99,14 @@ and where Px, Py and Pz are the world coordinates of the origin of the end effec
 
 *Decouple Inverse Kinematics problem into Inverse Position Kinematics and inverse Orientation Kinematics; doing so derive the equations to calculate all individual joint angles.*
 
-[image6]: ../images/law-of-cosines.png
-[image7]: ../images/cosine.png
-[image8]: ../images/theta1.gif
-[image9]: ../images/theta2.gif
+
+
+
+
 [image10]: ../images/theta3.gif
-[image11]: ../images/sidebcode.png
-[image12]: ../images/sideb.gif
-[image13]: ../images/theta1.png
+
+
+
 [image14]: ../images/theta3diag.png
 [image15]: ../images/theta2.png
 [image16]: ../images/theta3.png
@@ -116,33 +116,33 @@ and where Px, Py and Pz are the world coordinates of the origin of the end effec
 
 **For the inverse orientation step, we need to find the location of the wrist centre so that we can establish the 'inverse position'.**
 
-![no text][image7]
+![law of cosines](../images/cosine.png)
 
 Using the handwritten expressions above in terms of known wrist centre position, we can substitute in the below equation to find side b:
     
-![no text][image12]
+![sideb](../images/sideb.gif)
 
 Which can be expressed in python as:
 
-![no text][image11]
+![sidebcode](../images/sidebcode.png)
 
 Next we can find the individual angles A, B and C using:
 
+![law of cosines](../images/law-of-cosines.png)
 
-![no text][image6]
 *                         source: http://www.onlinemathlearning.com/image-files/law-of-cosines.png*
         
 And rearranging to find the angles. Using geometric information from the above hand drawn diagram, we can say that:
 
-![no text][image8]
+![theta1](../images/theta1.gif)
 
 and:
 
-![no text][image9]
+![theta2](../images/theta2.gif)
 
 Which can be expressed in python as:
     
-![no text][image13]
+![theta1code](../images/theta1.png)
 
 and
 
