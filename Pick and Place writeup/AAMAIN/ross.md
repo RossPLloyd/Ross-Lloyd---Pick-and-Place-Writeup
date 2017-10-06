@@ -21,7 +21,7 @@ Below is the DH diagram and table derived for the KukaKR210 arm:
 
 The table was derived as follows:
 
-**Row 1: **
+**Row 1**
 
 * a0 is 0, due to z0 and z1 being coincident
 * alpha0 is 0 as there is no skew angle between the z axis of joints 0 and 1
@@ -87,7 +87,7 @@ matrices for one frame to the next. Note that for T6_EE, we see the *Identity Ma
 given that there is no rotation from frame 6 to the frame of the end effector. There is however an offset of 0.303m which is 
 included as a translation element.
 
-** Individual Homogeneous Transformation Matrices **
+**Individual Homogeneous Transformation Matrices**
 
 ![Individual Homogeneous Transformation Matrices][image3]
 
@@ -98,7 +98,7 @@ the end effector, in terms of the known end effector pose. It is represented con
 
 It is expressed symbolically as follows, where r, p and y are the values of roll, pitch and yaw from the simulator:
 
-** HTM from base to gripper only **
+**HTM from base to gripper only**
 
 ![HTM simple][image2]
 
@@ -183,7 +183,7 @@ Where EE is the end effector and R is the horizontal distance along the z axis f
 
 ### Finding angles theta 4, theta5 and theta6
 
-** For the next step, we need to find theta 4, 5 and 6 to establish the inverse orientation of the gripper. **
+**For the next step, we need to find theta 4, 5 and 6 to establish the inverse orientation of the gripper.**
 
 
 
