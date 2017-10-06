@@ -7,14 +7,6 @@
 
 *Run the forward_kinematics demo and evaluate the kr210.urdf.xacro file to perform kinematic analysis of Kuka KR210 robot and derive its DH parameters.*
 
-
-
-[image2]: ../images/simple.png
-
-
-
-
-
 Below is the DH diagram and table derived for the KukaKR210 arm:
 ![DH_Board](../images/dh_modified_board.png)
 
@@ -99,7 +91,7 @@ It is expressed symbolically as follows, where r, p and y are the values of roll
 
 **HTM from base to gripper only**
 
-![HTM simple][image2]
+![HTM simple](/images/simple.png)
 
 and where Px, Py and Pz are the world coordinates of the origin of the end effector. The rotation matrix is formed by mutliplying together the three elemental rotations about x, y and z axes.
 
