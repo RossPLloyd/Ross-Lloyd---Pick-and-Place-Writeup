@@ -241,7 +241,7 @@ One thing I noticed was that the gripper would occasionally "let go" of the samp
 
 Accuracy in my tests was extremely good with 98-100% success rate. The only occasional failure I saw occurred when a plan is generated that is extremely close to the shelf retrieving the sample from position 3. The end effector would again "try" to precisely match the plan at an inopportune moment, leading to a rotation of the sample that can sometimes lead to it hitting the shelf as it turns. However this is very rare in my testing and the end effector is nonetheless sticking to the plan. One way to possibly prevent it may have been to grip the sample in the middle rather than at the top, which would have involved modifying the plan.
 
-The main downside is the speed of the movement. One way to get aroud this might have been to only send part of the list for the calculated angles to the sim and 'skip' waypoints in the plan. I tried using only the final position but this was far too unreliable and lead to frequent collisions.
+The main downside is the speed of the movement. One way to get aroud this might have been to only send part of the list for the calculated angles to the sim and 'skip' waypoints in the plan. However this increases the likelihood of collisions. I tried using only the final position but this was far too unreliable.
 
 ```python
 
