@@ -6,9 +6,9 @@
 ## 1. Demo and Denavit Hartenberg Parameters 
 
 *Run the forward_kinematics demo and evaluate the kr210.urdf.xacro file to perform kinematic analysis of Kuka KR210 robot and derive its DH parameters.*
-[//]: # (Image References)
 
-[image1]: ../images/dh_modified_board.png
+
+
 [image2]: ../images/simple.png
 [image3]: ../images/matrices.png
 [image4]: ../images/STD_HT.png
@@ -16,8 +16,7 @@
 
 
 Below is the DH diagram and table derived for the KukaKR210 arm:
-![test](../images/dh_modified_board.png)
-![Modified DH Table][image1]
+![DH_Board](../images/dh_modified_board.png)
 
 The table was derived as follows:
 
@@ -77,7 +76,7 @@ The table was derived as follows:
 
 **Standard Homogenous Transformation matrix from frame i-1 to frame i using DH Parameters:**
 
-![std_ht][image4]
+![std_ht](../images/STD_HT.png)
 
 The above standard homogeneous transform from frame i-1 to frame i is constructed as a sequence of four basic transformations, 
 two rotations and two translations.
