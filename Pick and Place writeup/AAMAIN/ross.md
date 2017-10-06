@@ -145,7 +145,6 @@ Giving:
 
 Which can be reppresented in code as:
     
-![no text][image16]
 ![thetra3code](../images/theta3.png)
 
 This provides us with our three angles which set the location of the wrist centre equal to the position given by:
