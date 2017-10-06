@@ -153,50 +153,40 @@ This provides us with our three angles which set the location of the wrist centr
 ![image19](../images/image-4.png)
 
 Where EE is the end effector and R is the horizontal distance along the z axis from joint5 to the end effector of 0.303 given by the urdf.
-    
-
-
-
-
-
 
 ### Finding angles theta 4, theta5 and theta6
 
 **For the next step, we need to find theta 4, 5 and 6 to establish the inverse orientation of the gripper.**
-
-
-
-[image17]: ../images/symbolic_matrix.png
-[image18]: ../images/theta456.png
-[image19]: ../images/rinvr.png
-[image20]: ../images/elements.png
-[image21]: ../images/theta4.gif
-[image22]: ../images/theta5.gif
-[image23]: ../images/theta6.gif
     
 This is achieved by finding a set of euler angles corresponding to the following:
 
-![no text][image19]
+![rinvr](../images/rinvr.png)
     
 We can find expressions for each of the angles by looking at the following matrix. This is the symbolic matrix created by multiplying just the rotation matrices from T3_4, T4_5 and T5_6 together and which represents the rotation from the origin of joint 3 to the origin of joint 6. 
 
-![no text][image17]
+![image17](../images/symbolic_matrix.png)
 
 We can consider this matrix in terms of its elements:
-    
-![no text][image20]
+ 
+![elements](../images/elements.png)
 
 And as a result derive expressions for each of the angles:
 
-![no text][image21]
-![no text][image22]
-![no text][image23]
+![theta41](../images/theta4.gif)
+
+and
+
+![theta5](../images/theta5.gif)
+
+and
+
+![theta6](../images/theta6.gif)
     
 Note that some terms are negative in sign which ensures that atan2 calculates the correct quadrant for the angle.
 
 These expressions can be written in python as follows:
 
-![no text][image18]
+![theta456code]: ../images/theta456.png
 
 
 
