@@ -99,19 +99,6 @@ and where Px, Py and Pz are the world coordinates of the origin of the end effec
 
 *Decouple Inverse Kinematics problem into Inverse Position Kinematics and inverse Orientation Kinematics; doing so derive the equations to calculate all individual joint angles.*
 
-
-
-
-
-[image10]: ../images/theta3.gif
-
-
-
-[image14]: ../images/theta3diag.png
-[image15]: ../images/theta2.png
-[image16]: ../images/theta3.png
-[image19]: ../images/image-4.png
-
 ### Inverse Orientation - Finding angles theta1, theta2 and theta3:
 
 **For the inverse orientation step, we need to find the location of the wrist centre so that we can establish the 'inverse position'.**
@@ -146,23 +133,24 @@ Which can be expressed in python as:
 
 and
 
-![no text][image15]
+![theta2code](../images/theta2.png)
 
 Finally we can find theta3 considering the following diagram, and recalling that there is a small offset angle from joint 3 to joint 4:
 
-![no text][image14]
+![theta3diagram](../images/theta3diag.png)
 
 Giving:
     
-![no text][image10]
+![theta3](../images/theta3.gif)
 
 Which can be reppresented in code as:
     
 ![no text][image16]
+![thetra3code](../images/theta3.png)
 
 This provides us with our three angles which set the location of the wrist centre equal to the position given by:
-    
-![no text][image19]
+   
+![image19](../images/image-4.png)
 
 Where EE is the end effector and R is the horizontal distance along the z axis from joint5 to the end effector of 0.303 given by the urdf.
     
