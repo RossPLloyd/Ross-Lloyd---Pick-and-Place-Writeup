@@ -208,7 +208,15 @@ Below is a link to a short video of 10 successful pick and place cycles.
 
 https://www.youtube.com/watch?v=0HsAr-Q0-i4
 
-Note that on cycle 7, the sample is correctly placed, but due to the 'tower' of previous samples, ends up rolling out of the bin! I do not consider this a failure as ultimately the robot followed the plan to the correct location. One way to avoid this would have been to modify the plan section of the code to slighly randomise the drop pose position within a small tolerance.
+Note that on cycle 7, the sample is correctly placed, but due to the 'tower' of previous samples, ends up rolling out of the bin! **I do not consider this a failure** as ultimately the robot followed the plan to the correct location. One way to avoid this would have been to modify the plan section of the code to slighly randomise the drop pose position within a small tolerance.
+
+**Shot of bin with 9 samples**
+
+![9samplebin](../images/bin.png)
+
+**...and the "tower escapee"**
+
+![escapee](../images/escapee.png)
 
 The gripper follows the plan exactly, making frequent adjustments to ensure that the gripper frame exactly matches that of the plan. In some ways this is a disadvantage as it increases the overall cycle time, however it does ensure that the gripper is less likely to hit the shelf.
 
