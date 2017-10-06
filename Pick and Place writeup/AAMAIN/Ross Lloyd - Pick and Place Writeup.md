@@ -235,7 +235,7 @@ Note that on cycle 7, the sample is correctly placed, but due to the 'tower' of 
 
 The gripper follows the plan exactly, making frequent adjustments to ensure that the gripper frame matches that of the plan. In some ways this is a disadvantage as it increases the overall cycle time, however it does ensure that the gripper is less likely to hit the shelf and confirms the code is working correctly.
 
-Earlier results were poor due to the use of the LU decomposition. The end effector would hit the shelf, attempt grasping movements at the wrong angle, and even cause the sample to be dropped by hitting the bin. One theory is that LU carries out its own calculations which can introduce small errors, which can then be compounded by the subsequent atan2 calculations, leading to the wrong quadrant being selected. Replacing the inv LU command with a transpose solved this problem.
+Earlier results were poor due to the use of the LU decomposition when finding the inverse of R0_3. The end effector would hit the shelf, attempt grasping movements at the wrong angle, and even cause the sample to be dropped by hitting the bin. One theory is that LU carries out its own calculations which can introduce small errors, which can then be compounded by the subsequent atan2 calculations, leading to the wrong quadrant being selected. Replacing the inv LU command with a transpose solved this problem.
 
 One thing I noticed was that the gripper would occasionally "let go" of the sample during the grasp stage, however this only occurred when the grip cycle was interrupted by pressing the "next" button too soon. For this reason plenty of time was left to complete the grip cycle, which is in any case not controlled by IK_server.py.
 
