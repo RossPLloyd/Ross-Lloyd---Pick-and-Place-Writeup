@@ -10,9 +10,9 @@
 
 
 [image2]: ../images/simple.png
-[image3]: ../images/matrices.png
-[image4]: ../images/STD_HT.png
-[image5]: ../images/eq3.png
+
+
+
 
 
 Below is the DH diagram and table derived for the KukaKR210 arm:
@@ -88,12 +88,12 @@ included as a translation element.
 
 **Individual Homogeneous Transformation Matrices**
 
-![Individual Homogeneous Transformation Matrices][image3]
+[Individual Homogeneous Transformation Matrices](../images/matrices.png)
 
 It us also possible to create a homogeneous transformation matrix that represents only the transformation from the base link to
 the end effector, in terms of the known end effector pose. It is represented concetually as follows:
-    
-![base to end effector][image5]
+
+[base to end effector](../images/eq3.png)
 
 It is expressed symbolically as follows, where r, p and y are the values of roll, pitch and yaw from the simulator:
 
