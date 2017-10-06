@@ -88,12 +88,12 @@ included as a translation element.
 
 **Individual Homogeneous Transformation Matrices**
 
-[Individual Homogeneous Transformation Matrices](../images/matrices.png)
+![Individual Homogeneous Transformation Matrices](../images/matrices.png)
 
 It us also possible to create a homogeneous transformation matrix that represents only the transformation from the base link to
 the end effector, in terms of the known end effector pose. It is represented concetually as follows:
 
-[base to end effector](../images/eq3.png)
+![base to end effector](../images/eq3.png)
 
 It is expressed symbolically as follows, where r, p and y are the values of roll, pitch and yaw from the simulator:
 
