@@ -198,35 +198,13 @@ I found this project to be extremely challenging, and as a result the code for m
 
 I realised that not all DH Parameters and Homogenous Transformations are necessary in the calculations of Inverse Position and Orientation, and so in the interests of reducing cycle time I commented out those sections not required by the code. If I had chosen to implement the "challenge" elements of the project I would have needed to include especially the elements finding the forward kinematics to allow me to compare between the values found by the Inverse Kinematic calculations.
 
-I also changed the method for finding the inverse of R0_3 in the line "R3_6 = R0_3.T * ROT_EE". The classroom recommended using the LU decomposition, however I found that this lead to inaccurate positioning of the robot manipulator. Given that the transpose of an orthogonal matrix is equal to its inverse, I used the .T transpose method. I believe this was more accurate as the LU decomposition carries out calculations of its own, and could have introduced errors which may have been compounded by subsequent calculations. Transpose on the other hand simply changes the arrangement of the matrix.
+I changed the method for finding the inverse of R0_3 in the line "R3_6 = R0_3.T * ROT_EE". The classroom recommended using the LU decomposition, however I found that this lead to inaccurate positioning of the robot manipulator. Given that the transpose of an orthogonal matrix is equal to its inverse, I used the .T transpose method. I believe this was more accurate as the LU decomposition carries out calculations of its own, and could have introduced errors which may have been compounded by subsequent calculations. Transpose on the other hand simply changes the arrangement of the matrix.
 
-I also decided to use the function definition of the transformation matrices given in the walktrhough as this was cleaner and solve time was reduced. I have however included the original "long form" symbolic matrices in comments for illustration.
+I decided to use the function definition of the transformation matrices given in the walkthrough as this was cleaner and solve time was reduced. I have however included the original "long form" symbolic matrices in comments for illustration.
 
-**Analysis of Results**
+I removed the 'simplify' function from the code as this added to the calculation time.
 
-Below is a link to a short video of 10 successful pick and place cycles. 
-
-https://www.youtube.com/watch?v=0HsAr-Q0-i4
-
-Note that on cycle 7, the sample is correctly placed, but due to the 'tower' of previous samples, ends up rolling out of the bin! **I do not consider this a failure** as ultimately the robot followed the plan to the correct location. One way to avoid this would have been to modify the plan section of the code to slighly randomise the drop pose position within a small tolerance.
-
-**Shot of bin with 9 samples**
-
-![9samplebin](../images/bin.png)
-
-**...and the "tower escapee"**
-
-![escapee](../images/escapee.png)
-
-The gripper follows the plan exactly, making frequent adjustments to ensure that the gripper frame exactly matches that of the plan. In some ways this is a disadvantage as it increases the overall cycle time, however it does ensure that the gripper is less likely to hit the shelf.
-
-Earlier results were poor due to the use of the LU decomposition. One theory is that LU carries out its own calculations which can introduce small errors, which can then be compounded by the subsequent atan2 calculations, leading to the wrong quadrant being selected.
-
-One thing I noticed was that the gripper would occasionally "let go" of the sample, however this only occurred when the grip cycle was interrupted by pressing the "next" button too soon. For this reason plenty of time was left to complete the grip cycle, which is in any case not controlled by IK_server.py.
-
-Accuracy in my tests was extremely good with 98-100% success rate. The only occasional failure I saw occurred when a plan is generated that is extremely close to the shelf retrieving the sample from position 3. The end effector would again "try" to precisely match the plan at an inopportune moment, leading to a rotation of the sample that can sometimes lead to it hitting the shelf as it turns. However this is very rare in my testing and the end effector is nonetheless sticking to the plan. One way to possibly prevent it may have been to grip the samnple in the middle rather than at the top.
-
-In order to improve calculation speed I could have perhaps experimented with using numpy rather than sympy, however I felt that the speed of the calculation stage of the pick and place cycle was not too onerous.
+I could have perhaps experimented with using numpy rather than sympy, however I felt that the speed of the calculation stage of the pick and place cycle was not too onerous.
 
 Note that the line:
 
@@ -239,7 +217,31 @@ Represents the wrist centre position given by the following:
 Where d is the distance along the z axis given by the urdf file of 0.303m from the end effector to the wrist centre.
 
 
+## Analysis of Results
 
+Below is a link to a short video of 10 successful pick and place cycles. 
+
+https://www.youtube.com/watch?v=0HsAr-Q0-i4
+
+Note that on cycle 7, the sample is correctly placed, but due to the 'tower' of previous samples, ends up rolling out of the bin! **I do not consider this a failure** as ultimately the robot followed the plan to the correct location. One way to avoid this would have been to modify the plan section of the code to slightly randomise the drop pose position within a small tolerance.
+
+**Shot of bin with 9 samples**
+
+![9samplebin](../images/bin.png)
+
+**...and the "tower escapee"**
+
+![escapee](../images/escapee.png)
+
+The gripper follows the plan exactly, making frequent adjustments to ensure that the gripper frame matches that of the plan. In some ways this is a disadvantage as it increases the overall cycle time, however it does ensure that the gripper is less likely to hit the shelf and confirms the code is working correctly.
+
+Earlier results were poor due to the use of the LU decomposition. The end effector would hit the shelf, attempt grasping movements at the wrong angle, and even cause the sample to be dropped by hitting the bin. One theory is that LU carries out its own calculations which can introduce small errors, which can then be compounded by the subsequent atan2 calculations, leading to the wrong quadrant being selected. Replacing the inv LU command with a transpose solved this problem.
+
+One thing I noticed was that the gripper would occasionally "let go" of the sample during the grasp stage, however this only occurred when the grip cycle was interrupted by pressing the "next" button too soon. For this reason plenty of time was left to complete the grip cycle, which is in any case not controlled by IK_server.py.
+
+Accuracy in my tests was extremely good with 98-100% success rate. The only occasional failure I saw occurred when a plan is generated that is extremely close to the shelf retrieving the sample from position 3. The end effector would again "try" to precisely match the plan at an inopportune moment, leading to a rotation of the sample that can sometimes lead to it hitting the shelf as it turns. However this is very rare in my testing and the end effector is nonetheless sticking to the plan. One way to possibly prevent it may have been to grip the samnple in the middle rather than at the top.
+
+The main downside is the speed of the movement. One way to get aroud this might have been to only send part of the list for the calculated angles to the sim and 'skip' waypoints in the plan. I tried using only the final position but this was far too unreliable and lead to frequent collisions.
 
 ```python
 
